@@ -1,0 +1,84 @@
+{
+  "fall": {
+    "protected": { "commands": [] },
+    "disturbed": {
+      "commands": [
+        "player:title @s title {\"text\":\"The First Stirring\",\"color\":\"yellow\"}",
+        "player:title @s subtitle {\"text\":\"Ancient seals begin to strain.\"}",
+        "player:execute as @s at @s run playsound barrier:barrier_tremble master @s ~ ~ ~",
+        "server:weather rain"
+      ]
+    },
+    "breached": {
+      "commands": [
+        "player:title @s title {\"text\":\"The First Crack\",\"color\":\"red\"}",
+        "player:title @s subtitle {\"text\":\"Forgotten things find a path home.\"}",
+        "player:execute as @s at @s run playsound barrier:dimension_tremble master @s ~ ~ ~",
+        "player:effect give @s minecraft:nausea 5 1 true",
+        "player:effect give @s minecraft:darkness 3 0 true",
+        "player:particle minecraft:soul ~ ~1 ~ 0.5 1 0.5 0.05 100 force @s"
+      ]
+    },
+    "corrupted": {
+      "commands": [
+        "player:title @s title {\"text\":\"The Sundering\",\"color\":\"dark_purple\"}",
+        "player:title @s subtitle {\"text\":\"Ancient horros scent freedom.\"}",
+        "player:execute as @s at @s run playsound barrier:dimension_tremble2 master @s ~ ~ ~",
+        "player:effect give @s minecraft:nausea 8 1 true",
+        "player:effect give @s minecraft:darkness 6 0 true",
+        "player:particle minecraft:soul ~ ~1 ~ 0.5 1 0.5 0.05 100 force @s"
+      ]
+    },
+    "collapse": {
+      "commands": [
+        "player:title @s title {\"text\":\"The Fall\",\"color\":\"dark_red\"}",
+        "player:title @s subtitle {\"text\":\"The ancient ward has failed.\"}",
+        "player:execute as @s at @s run playsound barrier:dimension_tremble3 master @s ~ ~ ~",
+        "player:effect give @s minecraft:nausea 9 1 true",
+        "player:effect give @s minecraft:darkness 6 0 true",
+        "player:effect give @s minecraft:weakness 30 0 true",
+        "player:particle minecraft:ash ~ ~1 ~ 1 1 1 0.01 200 force @s",
+        "player:particle minecraft:soul_fire_flame ~ ~1 ~ 0.5 1 0.5 0.02 75 force @s",
+        "server:time set night"
+      ]
+    }
+  },
+  "mend": {
+    "protected": {
+      "commands": [
+        "player:title @s title {\"text\":\"The Barrier Holds\",\"color\":\"green\"}",
+        "player:title @s subtitle {\"text\":\"The ancient seal stands firm once more.\"}",
+        "player:execute as @s at @s run playsound minecraft:block.beacon.activate master @s ~ ~ ~",
+        "player:particle minecraft:end_rod ~ ~1 ~ 0.5 1 0.5 0.02 150 force @s",
+        "player:particle minecraft:glow ~ ~1 ~ 0.5 1 0.5 0.02 100 force @s",
+        "server: weather clear"
+      ]
+    },
+    "disturbed": {
+      "commands": [
+        "player:title @s title {\"text\":\"The Barrier Recovers\",\"color\":\"yellow\"}",
+        "player:title @s subtitle {\"text\":\"Ancient wards strengthen once more.\"}",
+        "player:execute as @s at @s run playsound minecraft:block.amethyst_block.step master @s ~ ~ ~",
+        "player:particle minecraft:glow ~ ~1 ~ 0.5 1 0.5 0.02 75 force @s"
+      ]
+    },
+    "breached": {
+      "commands": [
+        "player:title @s title {\"text\":\"The Barrier Mends\",\"color\":\"red\"}",
+        "player:title @s subtitle {\"text\":\"The dead lose their foothold.\"}",
+        "player:execute as @s at @s run playsound minecraft:block.bell.resonate master @s ~ ~ ~",
+        "player:particle minecraft:end_rod ~ ~1 ~ 0.5 1 0.5 0.02 150 force @s",
+        "server:weather clear"
+      ]
+    },
+    "corrupted": {
+      "commands": [
+        "player:title @s title {\"text\":\"The Barrier Endures\",\"color\":\"dark_purple\"}",
+        "player:title @s subtitle {\"text\":\"The darkness retreats, if only slightly.\"}",
+        "player:execute as @s at @s run playsound minecraft:block.beacon.activate master @s ~ ~ ~",
+        "particle minecraft:end_rod ~ ~1 ~ 0.5 1 0.5 0.02 100 force @s"
+      ]
+    },
+    "collapse": { "commands": [] }
+  }
+}
