@@ -12,6 +12,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+/**
+ * Runtime event registry that applies barrier changes from configured event triggers.
+ */
 public class EventService {
     private static final Logger LOGGER = LogManager.getLogger();
     
@@ -30,7 +33,7 @@ public class EventService {
     }
 
     /**
-     * Initialize the EventService with required dependencies
+     * Initializes runtime dependencies after server resources are loaded.
      */
     public void initialize(BarrierService barrierService) {
         this.barrierService = barrierService;
@@ -38,9 +41,11 @@ public class EventService {
     }
 
     /**
-     * Trigger an event for a player
+        * Triggers an event for a player and mutates barrier value when conditions are met.
      */
     public void triggerEvent(String eventId, Player player, MinecraftServer server) {
+        LOGGER.info("EventService.triggerEvent called for event {}", eventId);
+        
         if (!this.events.containsKey(eventId)) {
             LOGGER.warn("Attempted to trigger unknown event: {}", eventId);
             return;
@@ -63,6 +68,9 @@ public class EventService {
             }
         }
 
+        LOGGER.info("EventService: About to call changeBarrier with amount {}", event.getBarrierChange());
+        LOGGER.info("EventService: barrierService is {}", this.barrierService == null ? "NULL" : "NOT NULL");
+        
         // Apply barrier change
         this.barrierService.changeBarrier(server, event.getBarrierChange());
         LOGGER.info("Event {} triggered for player {}: barrier changed by {}", 
@@ -75,14 +83,14 @@ public class EventService {
     }
 
     /**
-     * Check if an event is currently enabled
+     * Returns true when an event is currently enabled at runtime.
      */
     public boolean isEventEnabled(String eventId) {
         return this.enabledStates.getOrDefault(eventId, false);
     }
 
     /**
-     * Enable an event at runtime
+     * Enables or disables an event at runtime.
      */
     public void setEventEnabled(String eventId, boolean enabled) {
         if (!this.events.containsKey(eventId)) {
@@ -94,21 +102,21 @@ public class EventService {
     }
 
     /**
-     * Get an event definition by ID
+     * Returns an event definition by id when present.
      */
     public Optional<EventDefinition> getEvent(String eventId) {
         return Optional.ofNullable(this.events.get(eventId));
     }
 
     /**
-     * Get all events
+     * Returns a defensive copy of all loaded events.
      */
     public Map<String, EventDefinition> getAllEvents() {
         return new HashMap<>(this.events);
     }
 
     /**
-     * Get all enabled event IDs
+     * Returns ids of events currently enabled at runtime.
      */
     public java.util.Collection<String> getEnabledEventIds() {
         return this.enabledStates.entrySet().stream()

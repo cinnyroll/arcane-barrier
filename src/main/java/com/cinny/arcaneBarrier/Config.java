@@ -5,6 +5,9 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.config.ModConfigEvent;
 
+/**
+ * Forge config definition and runtime mirror fields for Arcane Barrier.
+ */
 @Mod.EventBusSubscriber(modid = ArcaneBarrier.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class Config {
     private static final ForgeConfigSpec.Builder BUILDER = new ForgeConfigSpec.Builder();
@@ -32,6 +35,9 @@ public class Config {
     public static boolean enableTransitions;
     public static int defaultBarrier;
 
+        /**
+         * Copies configured values into static runtime fields when Forge reloads config.
+         */
     @SubscribeEvent
     static void onLoad(final ModConfigEvent event) {
         debugEntitySpawns = DEBUG_ENTITY_SPAWNS.get();

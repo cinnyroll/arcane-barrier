@@ -3,6 +3,7 @@ package com.cinny.arcaneBarrier.barrier;
 import com.cinny.arcaneBarrier.Config;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
+import net.minecraft.nbt.StringTag;
 import net.minecraft.nbt.Tag;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.world.level.saveddata.SavedData;
@@ -14,6 +15,9 @@ import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
 
+/**
+ * Persistent world data for barrier state, stage baseline, and first-time event tracking.
+ */
 public class BarrierSavedData extends SavedData {
     public static final String DATA_ID = "arcane_barrier_state";
 
@@ -25,7 +29,7 @@ public class BarrierSavedData extends SavedData {
     private int barrier;
     private BarrierStage currentBarrierStage;
     private boolean firstSpellbookCrafted;
-    private Map<String, Set<UUID>> firstTimeOnlyPlayers;
+    private final Map<String, Set<UUID>> firstTimeOnlyPlayers;
 
     public BarrierSavedData() {
         this.barrier = Config.defaultBarrier;
@@ -34,11 +38,17 @@ public class BarrierSavedData extends SavedData {
         this.firstTimeOnlyPlayers = new HashMap<>();
     }
 
+    /**
+     * Loads or creates the singleton saved data instance for the overworld.
+     */
     public static BarrierSavedData get(MinecraftServer server) {
         DimensionDataStorage storage = server.overworld().getDataStorage();
         return storage.computeIfAbsent(BarrierSavedData::load, BarrierSavedData::new, DATA_ID);
     }
 
+    /**
+     * Deserializes barrier state from NBT, including first-time-only event triggers.
+     */
     public static BarrierSavedData load(CompoundTag tag) {
         BarrierSavedData data = new BarrierSavedData();
         data.barrier = clamp(tag.contains(KEY_BARRIER) ? tag.getInt(KEY_BARRIER) : Config.defaultBarrier);
@@ -65,6 +75,9 @@ public class BarrierSavedData extends SavedData {
         return data;
     }
 
+    /**
+     * Serializes barrier state and per-event player UUID tracking to NBT.
+     */
     @Override
     public CompoundTag save(CompoundTag tag) {
         tag.putInt(KEY_BARRIER, this.barrier);
@@ -76,7 +89,7 @@ public class BarrierSavedData extends SavedData {
         for (Map.Entry<String, Set<UUID>> entry : this.firstTimeOnlyPlayers.entrySet()) {
             ListTag playerList = new ListTag();
             for (UUID playerId : entry.getValue()) {
-                playerList.add(Tag.TAG_STRING, playerId.toString());
+                playerList.add(StringTag.valueOf(playerId.toString()));
             }
             ftoTag.put(entry.getKey(), playerList);
         }
@@ -85,28 +98,46 @@ public class BarrierSavedData extends SavedData {
         return tag;
     }
 
+    /**
+     * Returns the persisted barrier value in the inclusive range 0..100.
+     */
     public int getBarrier() {
         return this.barrier;
     }
 
+    /**
+     * Persists a new barrier value after clamping and marks data dirty.
+     */
     public void setBarrier(int barrier) {
         this.barrier = clamp(barrier);
         this.setDirty();
     }
 
+    /**
+     * Returns the stage used as the transition baseline.
+     */
     public BarrierStage getCurrentBarrierStage() {
         return this.currentBarrierStage;
     }
 
+    /**
+     * Updates transition baseline stage and marks data dirty.
+     */
     public void setCurrentBarrierStage(BarrierStage currentBarrierStage) {
         this.currentBarrierStage = currentBarrierStage;
         this.setDirty();
     }
 
+    /**
+     * Returns whether the one-time spellbook craft trigger has been consumed.
+     */
     public boolean isFirstSpellbookCrafted() {
         return this.firstSpellbookCrafted;
     }
 
+    /**
+     * Updates one-time spellbook craft state and marks data dirty.
+     */
     public void setFirstSpellbookCrafted(boolean firstSpellbookCrafted) {
         this.firstSpellbookCrafted = firstSpellbookCrafted;
         this.setDirty();

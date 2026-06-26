@@ -16,11 +16,17 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Loads event definitions from data/arcanebarrier/barrier/events.json.
+ */
 public class EventConfigLoader {
     private static final Logger LOGGER = LogManager.getLogger();
     private static final String NAMESPACE = "arcanebarrier";
     private static final String PATH = "barrier/events.json";
 
+    /**
+     * Parses all configured events and returns an empty list when the file is missing.
+     */
     public static List<EventDefinition> loadEvents(ResourceManager resourceManager) {
         List<EventDefinition> events = new ArrayList<>();
         
@@ -34,7 +40,7 @@ public class EventConfigLoader {
             }
 
             try (BufferedReader reader = new BufferedReader(new InputStreamReader(
-                    resource.get().openStream(), StandardCharsets.UTF_8))) {
+                    resource.get().open(), StandardCharsets.UTF_8))) {
                 
                 JsonObject root = JsonParser.parseReader(reader).getAsJsonObject();
                 JsonArray eventsArray = root.getAsJsonArray("events");

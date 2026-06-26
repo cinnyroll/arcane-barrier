@@ -18,12 +18,18 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+/**
+ * Loads stage transition command definitions from barrier/transitions.json.
+ */
 public final class BarrierTransitionDefinitions {
     public static final ResourceLocation TRANSITIONS_RESOURCE = new ResourceLocation(ArcaneBarrier.MODID, "barrier/transitions.json");
 
     private BarrierTransitionDefinitions() {
     }
 
+    /**
+     * Parses transition definitions from server resources, returning an empty table on failure.
+     */
     public static TransitionDefinitions load(MinecraftServer server) {
         Optional<Resource> resource = server.getResourceManager().getResource(TRANSITIONS_RESOURCE);
         if (resource.isEmpty()) {
@@ -42,6 +48,9 @@ public final class BarrierTransitionDefinitions {
         }
     }
 
+    /**
+     * Parses one direction branch (fall or mend) into stage-keyed command lists.
+     */
     private static Map<BarrierStage, List<String>> parseBranch(JsonObject branch) {
         if (branch == null) {
             return Collections.emptyMap();
@@ -63,11 +72,20 @@ public final class BarrierTransitionDefinitions {
         return byStage;
     }
 
+    /**
+     * Immutable transition lookup table.
+     */
     public record TransitionDefinitions(Map<BarrierTransitionService.Direction, Map<BarrierStage, List<String>>> table) {
+        /**
+         * Returns an empty transition table.
+         */
         public static TransitionDefinitions empty() {
             return new TransitionDefinitions(Collections.emptyMap());
         }
 
+        /**
+         * Returns commands for a direction/stage pair, or an empty list if not defined.
+         */
         public List<String> commandsFor(BarrierTransitionService.Direction direction, BarrierStage stage) {
             return table.getOrDefault(direction, Collections.emptyMap()).getOrDefault(stage, List.of());
         }

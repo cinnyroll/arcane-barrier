@@ -16,10 +16,16 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+/**
+ * Matches player kill events against configured entity_kill event conditions.
+ */
 @Mod.EventBusSubscriber(modid = "arcanebarrier", bus = Mod.EventBusSubscriber.Bus.FORGE, value = Dist.DEDICATED_SERVER)
 public class EntityKillListener {
     private static final Logger LOGGER = LogManager.getLogger();
 
+    /**
+     * Triggers matching entity_kill events when a player kills a configured entity type.
+     */
     @SubscribeEvent
     public static void onEntityKill(LivingDeathEvent event) {
         LivingEntity killedEntity = event.getEntity();

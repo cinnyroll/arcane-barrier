@@ -11,6 +11,9 @@ import net.minecraft.core.registries.Registries;
 
 import java.util.EnumSet;
 
+/**
+ * Enforces stage-based spawn gating using entity type tags.
+ */
 public class BarrierSpawnGateService {
     private static final TagKey<EntityType<?>> PROTECTED = createTag(BarrierStage.PROTECTED.id());
     private static final TagKey<EntityType<?>> DISTURBED = createTag(BarrierStage.DISTURBED.id());
@@ -24,6 +27,9 @@ public class BarrierSpawnGateService {
         this.barrierService = barrierService;
     }
 
+    /**
+     * Returns true when an entity spawn should be denied for the current barrier stage.
+     */
     public boolean shouldCancel(Entity entity, MinecraftServer server) {
         EnumSet<BarrierStage> entityStages = getEntityStages(entity);
         if (entityStages.isEmpty()) {
@@ -43,6 +49,9 @@ public class BarrierSpawnGateService {
         return !intersects;
     }
 
+    /**
+     * Collects all barrier stage tags attached to an entity type.
+     */
     private EnumSet<BarrierStage> getEntityStages(Entity entity) {
         EnumSet<BarrierStage> stages = EnumSet.noneOf(BarrierStage.class);
         if (entity.getType().builtInRegistryHolder().is(PROTECTED)) {
@@ -63,6 +72,9 @@ public class BarrierSpawnGateService {
         return stages;
     }
 
+    /**
+     * Returns the stage set currently allowed to spawn for a world stage.
+     */
     private static EnumSet<BarrierStage> allowedStages(BarrierStage stage) {
         return switch (stage) {
             case PROTECTED -> EnumSet.of(BarrierStage.PROTECTED);
@@ -73,6 +85,9 @@ public class BarrierSpawnGateService {
         };
     }
 
+    /**
+     * Builds a tag key under data/arcanebarrier/tags/entity_types.
+     */
     private static TagKey<EntityType<?>> createTag(String path) {
         return TagKey.create(Registries.ENTITY_TYPE, new ResourceLocation(ArcaneBarrier.MODID, path));
     }

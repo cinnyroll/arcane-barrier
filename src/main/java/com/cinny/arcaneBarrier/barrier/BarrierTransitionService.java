@@ -9,12 +9,22 @@ import net.minecraft.server.level.ServerPlayer;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Executes transition commands when the barrier stage changes.
+ */
 public class BarrierTransitionService {
+    /**
+     * Transition direction inferred from old/new stage rank.
+     */
     public enum Direction {
         FALL,
         MEND
     }
 
+    /**
+     * Runs configured transition commands for the new stage.
+     * Server commands run once, then player commands run for each online player.
+     */
     public void onBarrierStageChange(MinecraftServer server, BarrierStage oldStage, BarrierStage newStage) {
         if (!Config.enableTransitions) {
             return;

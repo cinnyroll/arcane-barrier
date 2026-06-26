@@ -9,13 +9,14 @@ import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
-import net.minecraft.commands.arguments.EntityArgument;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
-import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.event.RegisterCommandsEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
+/**
+ * Registers and handles admin-facing /barrier commands.
+ */
 public class BarrierCommandRegistrar {
     private final BarrierService barrierService;
 
@@ -23,11 +24,17 @@ public class BarrierCommandRegistrar {
         this.barrierService = barrierService;
     }
 
+    /**
+     * Forge command registration hook.
+     */
     @SubscribeEvent
     public void onRegisterCommands(RegisterCommandsEvent event) {
         register(event.getDispatcher());
     }
 
+    /**
+     * Defines root and subcommand tree for /barrier.
+     */
     private void register(CommandDispatcher<CommandSourceStack> dispatcher) {
         dispatcher.register(
                 Commands.literal("barrier")
@@ -58,6 +65,9 @@ public class BarrierCommandRegistrar {
         );
     }
 
+    /**
+     * Shows barrier value, current stage, and online player count.
+     */
     private int debug(CommandContext<CommandSourceStack> context) {
         int barrier = barrierService.getBarrier(context.getSource().getServer());
         String stage = barrierService.getBarrierStage(context.getSource().getServer()).id();
@@ -71,6 +81,9 @@ public class BarrierCommandRegistrar {
         return barrier;
     }
 
+    /**
+     * Sets barrier to an absolute value and reports the clamped result.
+     */
     private int set(CommandContext<CommandSourceStack> context, int value) {
         barrierService.setBarrier(context.getSource().getServer(), value);
         int barrier = barrierService.getBarrier(context.getSource().getServer());
@@ -78,6 +91,9 @@ public class BarrierCommandRegistrar {
         return barrier;
     }
 
+    /**
+     * Increases barrier by the provided amount.
+     */
     private int add(CommandContext<CommandSourceStack> context, int value) {
         barrierService.changeBarrier(context.getSource().getServer(), value);
         int barrier = barrierService.getBarrier(context.getSource().getServer());
@@ -85,6 +101,9 @@ public class BarrierCommandRegistrar {
         return barrier;
     }
 
+    /**
+     * Decreases barrier by the provided amount.
+     */
     private int remove(CommandContext<CommandSourceStack> context, int value) {
         barrierService.changeBarrier(context.getSource().getServer(), -value);
         int barrier = barrierService.getBarrier(context.getSource().getServer());
@@ -92,6 +111,9 @@ public class BarrierCommandRegistrar {
         return barrier;
     }
 
+    /**
+     * Dumps raw barrier SavedData NBT for diagnostics.
+     */
     private int raw(CommandContext<CommandSourceStack> context) {
         BarrierSavedData data = barrierService.getData(context.getSource().getServer());
         CompoundTag dump = data.save(new CompoundTag());
@@ -99,6 +121,9 @@ public class BarrierCommandRegistrar {
         return 1;
     }
 
+    /**
+     * Re-synchronizes player stages and refreshes transition baseline.
+     */
     private int refresh(CommandContext<CommandSourceStack> context) {
         barrierService.updateBarrierStage(context.getSource().getServer());
         barrierService.refreshBaseline(context.getSource().getServer());
@@ -106,6 +131,9 @@ public class BarrierCommandRegistrar {
         return 1;
     }
 
+    /**
+     * Lists loaded events with runtime enabled/disabled state.
+     */
     private int eventList(CommandContext<CommandSourceStack> context) {
         EventService eventService = barrierService.getEventService();
         if (eventService == null) {
@@ -128,6 +156,9 @@ public class BarrierCommandRegistrar {
         return 1;
     }
 
+    /**
+     * Enables one event by id at runtime.
+     */
     private int eventEnable(CommandContext<CommandSourceStack> context, String eventId) {
         EventService eventService = barrierService.getEventService();
         if (eventService == null) {
@@ -145,6 +176,9 @@ public class BarrierCommandRegistrar {
         return 1;
     }
 
+    /**
+     * Disables one event by id at runtime.
+     */
     private int eventDisable(CommandContext<CommandSourceStack> context, String eventId) {
         EventService eventService = barrierService.getEventService();
         if (eventService == null) {
@@ -162,6 +196,9 @@ public class BarrierCommandRegistrar {
         return 1;
     }
 
+    /**
+     * Prints detailed information for one configured event.
+     */
     private int eventInfo(CommandContext<CommandSourceStack> context, String eventId) {
         EventService eventService = barrierService.getEventService();
         if (eventService == null) {

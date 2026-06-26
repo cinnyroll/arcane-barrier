@@ -15,10 +15,16 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+/**
+ * Matches right-click block interactions against configured block_interact events.
+ */
 @Mod.EventBusSubscriber(modid = "arcanebarrier", bus = Mod.EventBusSubscriber.Bus.FORGE, value = Dist.DEDICATED_SERVER)
 public class BlockInteractListener {
     private static final Logger LOGGER = LogManager.getLogger();
 
+    /**
+     * Triggers matching block_interact events for right-clicked blocks.
+     */
     @SubscribeEvent
     public static void onPlayerInteract(PlayerInteractEvent.RightClickBlock event) {
         if (event.getLevel().isClientSide) {
@@ -29,8 +35,11 @@ public class BlockInteractListener {
         Block block = event.getLevel().getBlockState(event.getPos()).getBlock();
         MinecraftServer server = ((net.minecraft.server.level.ServerLevel)event.getLevel()).getServer();
         
+        LOGGER.info("BlockInteractListener: Player {} right-clicked block {}", player.getName().getString(), block);
+        
         EventService eventService = ArcaneBarrier.barrierService().getEventService();
         if (eventService == null) {
+            LOGGER.warn("BlockInteractListener: EventService is null!");
             return;
         }
 
@@ -51,8 +60,12 @@ public class BlockInteractListener {
             String blockName = condition.get("block").getAsString();
             ResourceLocation blockRL = new ResourceLocation(blockName);
             Block targetBlock = BuiltInRegistries.BLOCK.get(blockRL);
+            
+            LOGGER.info("BlockInteractListener: Checking event {} - target block: {}, clicked block: {}, match: {}", 
+                    eventId, blockName, block, targetBlock == block);
 
             if (targetBlock == block) {
+                LOGGER.info("BlockInteractListener: MATCH FOUND! Triggering event {}", eventId);
                 eventService.triggerEvent(eventId, player, server);
             }
         }

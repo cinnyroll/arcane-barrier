@@ -2,6 +2,9 @@ package com.cinny.arcaneBarrier.barrier.events;
 
 import com.google.gson.JsonObject;
 
+/**
+ * Immutable definition of one barrier-affecting gameplay event loaded from JSON.
+ */
 public class EventDefinition {
     private final String id;
     private final String type;
@@ -22,6 +25,9 @@ public class EventDefinition {
         this.condition = condition;
     }
 
+    /**
+     * Builds an event definition from one element in events.json.
+     */
     public static EventDefinition fromJson(JsonObject json) {
         String id = json.get("id").getAsString();
         String type = json.get("type").getAsString();
@@ -34,30 +40,51 @@ public class EventDefinition {
         return new EventDefinition(id, type, enabled, barrierChange, firstTimeOnly, description, condition);
     }
 
+    /**
+     * Unique event id used by commands and runtime tracking.
+     */
     public String getId() {
         return id;
     }
 
+    /**
+     * Event trigger type, such as block_interact or advancement.
+     */
     public String getType() {
         return type;
     }
 
+    /**
+     * Default enabled state loaded from config.
+     */
     public boolean isEnabled() {
         return enabled;
     }
 
+    /**
+     * Barrier delta applied when this event triggers.
+     */
     public int getBarrierChange() {
         return barrierChange;
     }
 
+    /**
+     * Returns true if this event can trigger only once per player.
+     */
     public boolean isFirstTimeOnly() {
         return firstTimeOnly;
     }
 
+    /**
+     * Human-readable description shown by command output.
+     */
     public String getDescription() {
         return description;
     }
 
+    /**
+     * Type-specific condition object used by listeners to match triggers.
+     */
     public JsonObject getCondition() {
         return condition;
     }

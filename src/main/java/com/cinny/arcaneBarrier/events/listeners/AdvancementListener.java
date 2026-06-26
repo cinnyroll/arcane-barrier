@@ -13,10 +13,16 @@ import net.minecraft.resources.ResourceLocation;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+/**
+ * Matches advancement progress events against configured advancement event definitions.
+ */
 @Mod.EventBusSubscriber(modid = "arcanebarrier", bus = Mod.EventBusSubscriber.Bus.FORGE, value = Dist.DEDICATED_SERVER)
 public class AdvancementListener {
     private static final Logger LOGGER = LogManager.getLogger();
 
+    /**
+     * Triggers matching advancement events for the current player and advancement id.
+     */
     @SubscribeEvent
     public static void onAdvancementProgressEvent(AdvancementEvent.AdvancementProgressEvent event) {
         Player player = event.getEntity();
