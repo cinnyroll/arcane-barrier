@@ -2,12 +2,14 @@ package com.cinny.arcaneBarrier.barrier;
 
 import com.cinny.arcaneBarrier.ArcaneBarrier;
 import com.cinny.arcaneBarrier.Config;
+import com.cinny.arcaneBarrier.barrier.events.EventService;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerPlayer;
 
 public class BarrierService {
     private final BarrierTransitionService transitionService = new BarrierTransitionService();
+    private EventService eventService;
 
     public int getBarrier(MinecraftServer server) {
         return BarrierSavedData.get(server).getBarrier();
@@ -71,6 +73,14 @@ public class BarrierService {
 
     public BarrierSavedData getData(MinecraftServer server) {
         return BarrierSavedData.get(server);
+    }
+
+    public EventService getEventService() {
+        return this.eventService;
+    }
+
+    public void setEventService(EventService eventService) {
+        this.eventService = eventService;
     }
 
     private void applyBarrier(MinecraftServer server, BarrierSavedData data, int clamped, boolean checkTransition) {

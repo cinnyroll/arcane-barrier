@@ -1,0 +1,55 @@
+{
+  "version": 1,
+  "description": "Barrier event configuration for Arcane Barrier mod. Define events that trigger barrier changes.",
+  "_comment_structure": "Each event has: id (unique), type (event type), enabled (default true), barrier_change (positive=mend, negative=fall), first_time_only (optional, default false), condition (type-specific)",
+  "_comment_types": "Supported types: block_interact (player interacts with block), entity_kill (player kills entity), dimension_change (player changes dimension), advancement (player completes advancement)",
+  "_comment_first_time_only": "When true, event only triggers once per player. Subsequent triggers by same player are ignored. Set to false for repeatable events.",
+  "events": [
+    {
+      "id": "crying_obsidian_interact",
+      "type": "block_interact",
+      "enabled": true,
+      "barrier_change": 5,
+      "first_time_only": true,
+      "description": "Right-clicking crying obsidian mends the barrier",
+      "condition": {
+        "block": "minecraft:crying_obsidian",
+        "hand": "any"
+      }
+    },
+    {
+      "id": "wither_kill",
+      "type": "entity_kill",
+      "enabled": true,
+      "barrier_change": -10,
+      "first_time_only": false,
+      "description": "Killing a wither causes the barrier to fall",
+      "condition": {
+        "entity_types": ["minecraft:wither"]
+      }
+    },
+    {
+      "id": "nether_enter",
+      "type": "dimension_change",
+      "enabled": true,
+      "barrier_change": -20,
+      "first_time_only": true,
+      "description": "Entering the nether causes a significant barrier fall",
+      "condition": {
+        "from_dimension": "minecraft:overworld",
+        "to_dimension": "minecraft:the_nether"
+      }
+    },
+    {
+      "id": "diamond_advancement",
+      "type": "advancement",
+      "enabled": true,
+      "barrier_change": 3,
+      "first_time_only": true,
+      "description": "Obtaining diamond progression mends the barrier slightly",
+      "condition": {
+        "advancement_id": "minecraft:story/mine_diamond"
+      }
+    }
+  ]
+}
