@@ -1,12 +1,11 @@
-package com.cinny.arcaneBarrier.barrier.events;
+package cinnydev.arcanebarrier.barrier.events;
 
 import java.util.EnumSet;
 
-import com.cinny.arcaneBarrier.ArcaneBarrier;
-import com.cinny.arcaneBarrier.Config;
-import com.cinny.arcaneBarrier.barrier.BarrierService;
-import com.cinny.arcaneBarrier.barrier.BarrierStage;
-
+import cinnydev.arcanebarrier.ArcaneBarrier;
+import cinnydev.arcanebarrier.Config;
+import cinnydev.arcanebarrier.barrier.BarrierService;
+import cinnydev.arcanebarrier.barrier.BarrierStage;
 import elocindev.necronomicon.api.NecUtilsAPI;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;

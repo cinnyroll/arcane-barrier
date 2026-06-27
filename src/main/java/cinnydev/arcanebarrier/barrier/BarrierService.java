@@ -1,8 +1,8 @@
-package com.cinny.arcaneBarrier.barrier;
+package cinnydev.arcanebarrier.barrier;
 
-import com.cinny.arcaneBarrier.ArcaneBarrier;
-import com.cinny.arcaneBarrier.Config;
-import com.cinny.arcaneBarrier.barrier.events.EventService;
+import cinnydev.arcanebarrier.ArcaneBarrier;
+import cinnydev.arcanebarrier.Config;
+import cinnydev.arcanebarrier.barrier.events.EventService;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerPlayer;

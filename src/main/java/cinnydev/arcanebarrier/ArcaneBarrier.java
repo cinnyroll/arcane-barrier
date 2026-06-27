@@ -1,13 +1,15 @@
-package com.cinny.arcaneBarrier;
+package cinnydev.arcanebarrier;
 
-import com.cinny.arcaneBarrier.barrier.BarrierService;
-import com.cinny.arcaneBarrier.commands.BarrierCommandRegistrar;
-import com.cinny.arcaneBarrier.events.BarrierEventHandlers;
-import com.cinny.arcaneBarrier.events.listeners.BlockInteractListener;
-import com.cinny.arcaneBarrier.events.listeners.EntityKillListener;
-import com.cinny.arcaneBarrier.events.listeners.DimensionChangeListener;
-import com.cinny.arcaneBarrier.events.listeners.AdvancementListener;
 import com.mojang.logging.LogUtils;
+
+import cinnydev.arcanebarrier.barrier.BarrierService;
+import cinnydev.arcanebarrier.commands.BarrierCommandRegistrar;
+import cinnydev.arcanebarrier.events.BarrierEventHandlers;
+import cinnydev.arcanebarrier.events.listeners.AdvancementListener;
+import cinnydev.arcanebarrier.events.listeners.BlockInteractListener;
+import cinnydev.arcanebarrier.events.listeners.DimensionChangeListener;
+import cinnydev.arcanebarrier.events.listeners.EntityKillListener;
+
 import org.slf4j.Logger;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;

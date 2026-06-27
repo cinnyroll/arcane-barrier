@@ -1,12 +1,13 @@
-package com.cinny.arcaneBarrier.commands;
+package cinnydev.arcanebarrier.commands;
 
-import com.cinny.arcaneBarrier.barrier.BarrierSavedData;
-import com.cinny.arcaneBarrier.barrier.BarrierService;
-import com.cinny.arcaneBarrier.barrier.events.EventService;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.context.CommandContext;
+
+import cinnydev.arcanebarrier.barrier.BarrierSavedData;
+import cinnydev.arcanebarrier.barrier.BarrierService;
+import cinnydev.arcanebarrier.barrier.events.EventService;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.nbt.CompoundTag;

@@ -1,13 +1,14 @@
-package com.cinny.arcaneBarrier.barrier;
+package cinnydev.arcanebarrier.barrier;
 
-import com.cinny.arcaneBarrier.ArcaneBarrier;
-import com.cinny.arcaneBarrier.Config;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerPlayer;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import cinnydev.arcanebarrier.ArcaneBarrier;
+import cinnydev.arcanebarrier.Config;
 
 /**
  * Executes transition commands when the barrier stage changes.

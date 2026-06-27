@@ -1,4 +1,4 @@
-package com.cinny.arcaneBarrier;
+package cinnydev.arcanebarrier;
 
 import java.util.Collections;
 import java.util.EnumMap;
@@ -7,8 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
-import com.cinny.arcaneBarrier.barrier.BarrierStage;
-
+import cinnydev.arcanebarrier.barrier.BarrierStage;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.common.ForgeConfigSpec;
 import net.minecraftforge.eventbus.api.SubscribeEvent;

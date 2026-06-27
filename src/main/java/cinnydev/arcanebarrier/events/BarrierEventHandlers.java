@@ -1,12 +1,5 @@
-package com.cinny.arcaneBarrier.events;
+package cinnydev.arcanebarrier.events;
 
-import com.cinny.arcaneBarrier.ArcaneBarrier;
-import com.cinny.arcaneBarrier.barrier.BarrierSavedData;
-import com.cinny.arcaneBarrier.barrier.BarrierService;
-import com.cinny.arcaneBarrier.barrier.events.EventConfigLoader;
-import com.cinny.arcaneBarrier.barrier.events.SpawnEventHandler;
-import com.cinny.arcaneBarrier.barrier.events.EventDefinition;
-import com.cinny.arcaneBarrier.barrier.events.EventService;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraftforge.event.entity.EntityJoinLevelEvent;
@@ -14,6 +7,14 @@ import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.server.ServerStartedEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import java.util.List;
+
+import cinnydev.arcanebarrier.ArcaneBarrier;
+import cinnydev.arcanebarrier.barrier.BarrierSavedData;
+import cinnydev.arcanebarrier.barrier.BarrierService;
+import cinnydev.arcanebarrier.barrier.events.EventConfigLoader;
+import cinnydev.arcanebarrier.barrier.events.EventDefinition;
+import cinnydev.arcanebarrier.barrier.events.EventService;
+import cinnydev.arcanebarrier.barrier.events.SpawnEventHandler;
 
 /**
  * Forge lifecycle handlers for server startup, player sync, craft trigger, and spawn gating.

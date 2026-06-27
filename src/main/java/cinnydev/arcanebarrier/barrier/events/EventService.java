@@ -1,11 +1,12 @@
-package com.cinny.arcaneBarrier.barrier.events;
+package cinnydev.arcanebarrier.barrier.events;
 
-import com.cinny.arcaneBarrier.barrier.BarrierSavedData;
-import com.cinny.arcaneBarrier.barrier.BarrierService;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.world.entity.player.Player;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import cinnydev.arcanebarrier.barrier.BarrierSavedData;
+import cinnydev.arcanebarrier.barrier.BarrierService;
 
 import java.util.HashMap;
 import java.util.List;

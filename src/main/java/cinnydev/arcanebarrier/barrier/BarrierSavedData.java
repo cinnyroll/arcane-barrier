@@ -1,6 +1,5 @@
-package com.cinny.arcaneBarrier.barrier;
+package cinnydev.arcanebarrier.barrier;
 
-import com.cinny.arcaneBarrier.Config;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.nbt.StringTag;
@@ -14,6 +13,8 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
+
+import cinnydev.arcanebarrier.Config;
 
 /**
  * Persistent world data for barrier state, stage baseline, and first-time event tracking.

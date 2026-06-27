@@ -1,4 +1,4 @@
-package com.cinny.arcaneBarrier.barrier.events;
+package cinnydev.arcanebarrier.barrier.events;
 
 import com.google.gson.JsonObject;
 

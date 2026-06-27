@@ -1,8 +1,9 @@
-package com.cinny.arcaneBarrier.events.listeners;
+package cinnydev.arcanebarrier.events.listeners;
 
-import com.cinny.arcaneBarrier.ArcaneBarrier;
-import com.cinny.arcaneBarrier.barrier.events.EventService;
 import com.google.gson.JsonObject;
+
+import cinnydev.arcanebarrier.ArcaneBarrier;
+import cinnydev.arcanebarrier.barrier.events.EventService;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.block.Block;

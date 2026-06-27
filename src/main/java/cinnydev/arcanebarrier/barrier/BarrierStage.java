@@ -1,4 +1,4 @@
-package com.cinny.arcaneBarrier.barrier;
+package cinnydev.arcanebarrier.barrier;
 
 import java.util.Locale;
 
