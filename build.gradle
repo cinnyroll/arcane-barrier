@@ -127,6 +127,10 @@ repositories {
         url = 'https://cursemaven.com/'
         content { includeGroup "curse.maven" }
     }
+    maven {
+        name = 'Modrinth'
+        url = 'https://api.modrinth.com/maven'
+    }
 }
 
 dependencies {
@@ -148,11 +152,8 @@ dependencies {
     // The group id is ignored when searching -- in this case, it is "blank"
     // implementation fg.deobf("blank:coolmod-${mc_version}:${coolmod_version}")
 
-    // Staged dependency reintroduction: Bookshelf only.
-    //runtimeOnly fg.deobf("net.darkhax.bookshelf:Bookshelf-Forge-1.20.1:20.2.15")
-
     // Staged dependency for NecronomiconAPI
-    //implementation fg.deobf("curse.maven:necronomicon-586157:1.4.2")
+    implementation fg.deobf("maven.modrinth:necronomicon:1.4.2-forge") 
 
     // For more info:
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
