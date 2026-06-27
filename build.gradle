@@ -122,11 +122,8 @@ repositories {
         name = 'BlameJared'
         url = 'https://maven.blamejared.com/'
     }
-    maven {
-        name = 'cursemaven'
-        url = 'https://cursemaven.com/'
-        content { includeGroup "curse.maven" }
-    }
+
+    // Modrinth hosts NecronomiconAPI artifacts.
     maven {
         name = 'Modrinth'
         url = 'https://api.modrinth.com/maven'
