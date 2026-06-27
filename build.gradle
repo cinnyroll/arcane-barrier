@@ -152,6 +152,9 @@ dependencies {
     // Staged dependency for NecronomiconAPI
     implementation fg.deobf("maven.modrinth:necronomicon:1.4.2-forge") 
 
+    // Staged dependency for GameStages
+    compileOnly fg.deobf("net.darkhax.gamestages:GameStages-Forge-1.20.1:15.0.2")
+
     // For more info:
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
