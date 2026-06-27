@@ -52,5 +52,7 @@ Transition commands not executing:
 
 Spawn gating seems incorrect:
 - Confirm entity type is in the expected stage tag file.
+- Confirm entity type is in the expected `protectedEntityTypes` / `disturbedEntityTypes` / `breachedEntityTypes` / `corruptedEntityTypes` / `collapseEntityTypes` list when using config-based overrides.
 - Enable debugEntitySpawns and inspect allow/deny logs.
 - Confirm current barrier stage with /barrier debug.
+- Restart or reload after editing `config/arcanebarrier-common.toml` so the updated stage mappings are applied.

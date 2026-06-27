@@ -2,7 +2,6 @@
   "replace": false,
   "values": [
     "minecraft:zombie",
-    "minecraft:baby_zombie",
     "minecraft:zombie_villager",
 
     "minecraft:skeleton",
@@ -11,27 +10,20 @@
     "minecraft:husk",
     "minecraft:stray",
 
-    "irons_spellbooks:necromancer",
-
-    "born_in_chaos_v1:baby_skeleton",
-    "born_in_chaos_v1:baby_spider",
-        
-
-    "born_in_chaos_v1:corpse_fish",
-    "born_in_chaos_v1:corpse_fly",
-
-    "born_in_chaos_v1:decaying_zombie",
-    "born_in_chaos_v1:decaying_zombie_not_despawn",
-    "born_in_chaos_v1:decrepit_skeleton",
-
-    "born_in_chaos_v1:glutton_fish",
-    "born_in_chaos_v1:maggot",
-
-    "born_in_chaos_v1:door_knight",
-    "born_in_chaos_v1:door_knight_not_despawn",
-
-    "born_in_chaos_v1:siamese_skeletons",
-    "born_in_chaos_v1:siamese_skeletonsleft",
-    "born_in_chaos_v1:siamese_skeletonsright"
+    { "id": "irons_spellbooks:necromancer",               "required": false },
+    { "id": "born_in_chaos_v1:baby_skeleton",             "required": false },
+    { "id": "born_in_chaos_v1:baby_spider",               "required": false },
+    { "id": "born_in_chaos_v1:corpse_fish",               "required": false },
+    { "id": "born_in_chaos_v1:corpse_fly",                "required": false },
+    { "id": "born_in_chaos_v1:decaying_zombie",           "required": false },
+    { "id": "born_in_chaos_v1:decaying_zombie_not_despawn", "required": false },
+    { "id": "born_in_chaos_v1:decrepit_skeleton",         "required": false },
+    { "id": "born_in_chaos_v1:glutton_fish",              "required": false },
+    { "id": "born_in_chaos_v1:maggot",                    "required": false },
+    { "id": "born_in_chaos_v1:door_knight",               "required": false },
+    { "id": "born_in_chaos_v1:door_knight_not_despawn",   "required": false },
+    { "id": "born_in_chaos_v1:siamese_skeletons",         "required": false },
+    { "id": "born_in_chaos_v1:siamese_skeletonsleft",     "required": false },
+    { "id": "born_in_chaos_v1:siamese_skeletonsright",    "required": false }
   ]
 }

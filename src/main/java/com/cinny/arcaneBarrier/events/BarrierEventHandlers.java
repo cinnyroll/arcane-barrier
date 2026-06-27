@@ -3,8 +3,8 @@ package com.cinny.arcaneBarrier.events;
 import com.cinny.arcaneBarrier.ArcaneBarrier;
 import com.cinny.arcaneBarrier.barrier.BarrierSavedData;
 import com.cinny.arcaneBarrier.barrier.BarrierService;
-import com.cinny.arcaneBarrier.barrier.BarrierSpawnGateService;
 import com.cinny.arcaneBarrier.barrier.events.EventConfigLoader;
+import com.cinny.arcaneBarrier.barrier.events.SpawnEventHandler;
 import com.cinny.arcaneBarrier.barrier.events.EventDefinition;
 import com.cinny.arcaneBarrier.barrier.events.EventService;
 import net.minecraft.resources.ResourceLocation;
@@ -22,11 +22,11 @@ public class BarrierEventHandlers {
     private static final ResourceLocation DIAMOND_SPELL_BOOK = new ResourceLocation("irons_spellbooks", "diamond_spell_book");
 
     private final BarrierService barrierService;
-    private final BarrierSpawnGateService spawnGateService;
+    private final SpawnEventHandler spawnEventHandler;
 
     public BarrierEventHandlers(BarrierService barrierService) {
         this.barrierService = barrierService;
-        this.spawnGateService = new BarrierSpawnGateService(barrierService);
+        this.spawnEventHandler = new SpawnEventHandler(barrierService);
     }
 
     /**
@@ -89,7 +89,7 @@ public class BarrierEventHandlers {
             return;
         }
 
-        if (spawnGateService.shouldCancel(event.getEntity(), event.getLevel().getServer())) {
+        if (spawnEventHandler.shouldCancelSpawn(event.getEntity(), event.getLevel().getServer())) {
             event.setCanceled(true);
         }
     }
