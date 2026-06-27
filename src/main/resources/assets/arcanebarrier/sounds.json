@@ -1,14 +1,37 @@
 {
-  "barrier_tremble": {
-    "sounds": []
-  },
-  "dimension_tremble": {
-    "sounds": []
-  },
-  "dimension_tremble2": {
-    "sounds": []
-  },
-  "dimension_tremble3": {
-    "sounds": []
-  }
+    "barrier_tremble": {
+        "sounds": [
+            {
+                "name": "arcanebarrier:barrier_tremble",
+                "volume": 0.25
+            }
+        ]
+    },
+
+    "dimension_tremble": {
+        "sounds": [
+            {
+                "name": "arcanebarrier:dimension_tremble",
+                "volume": 0.25
+            }
+        ]
+    },
+
+    "dimension_tremble2": {
+        "sounds": [
+            {
+                "name": "arcanebarrier:dimension_tremble2",
+                "volume": 0.25
+            }
+        ]
+    },
+
+    "dimension_tremble3": {
+        "sounds": [
+            {
+                "name": "arcanebarrier:dimension_tremble3",
+                "volume": 0.25
+            }
+        ]
+    }
 }
