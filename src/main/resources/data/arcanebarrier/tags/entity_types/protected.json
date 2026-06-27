@@ -3,19 +3,19 @@
   "values": [
     "minecraft:spider",
     "minecraft:cave_spider",
-    "born_in_chaos_v1:thornshell_crab",
-    "born_in_chaos_v1:pumpkin_bomb",
-    "born_in_chaos_v1:pumpkin_pistol_projectile",
-    "born_in_chaos_v1:pumpkin_pistol_2_projectile",
-    "born_in_chaos_v1:pumpkin_staff_projectile",
-    "born_in_chaos_v1:pumpkin_staff_2_projectile",
-    "born_in_chaos_v1:intoxicatind_bomb_projectile",
-    "born_in_chaos_v1:monstrous_easter_egg_projectile",
-    "born_in_chaos_v1:rotten_easter_egg_projectile",
-    "born_in_chaos_v1:spritiual_easter_egg_projectile",
-    "born_in_chaos_v1:staffof_blindness_projectile",
-    "born_in_chaos_v1:staffof_magic_arrows_projectile",
-    "born_in_chaos_v1:staffof_magic_arrows_2_projectile",
-    "born_in_chaos_v1:stimulating_bomb_projectile"
+    { "id": "born_in_chaos_v1:thornshell_crab",                   "required": false },
+    { "id": "born_in_chaos_v1:pumpkin_bomb",                      "required": false },
+    { "id": "born_in_chaos_v1:pumpkin_pistol_projectile",         "required": false },
+    { "id": "born_in_chaos_v1:pumpkin_pistol_2_projectile",       "required": false },
+    { "id": "born_in_chaos_v1:pumpkin_staff_projectile",          "required": false },
+    { "id": "born_in_chaos_v1:pumpkin_staff_2_projectile",        "required": false },
+    { "id": "born_in_chaos_v1:intoxicatind_bomb_projectile",      "required": false },
+    { "id": "born_in_chaos_v1:monstrous_easter_egg_projectile",   "required": false },
+    { "id": "born_in_chaos_v1:rotten_easter_egg_projectile",      "required": false },
+    { "id": "born_in_chaos_v1:spritiual_easter_egg_projectile",   "required": false },
+    { "id": "born_in_chaos_v1:staffof_blindness_projectile",      "required": false },
+    { "id": "born_in_chaos_v1:staffof_magic_arrows_projectile",   "required": false },
+    { "id": "born_in_chaos_v1:staffof_magic_arrows_2_projectile", "required": false },
+    { "id": "born_in_chaos_v1:stimulating_bomb_projectile",       "required": false }
   ]
 }

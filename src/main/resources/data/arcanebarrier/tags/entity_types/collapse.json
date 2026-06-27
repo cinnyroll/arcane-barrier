@@ -1,31 +1,23 @@
 {
   "replace": false,
   "values": [
-    "born_in_chaos_v1:nightmare_stalker",
-        
-    "born_in_chaos_v1:krampus",
-    "born_in_chaos_v1:krampus_henchman",
-
-    "born_in_chaos_v1:lifestealer",
-    "born_in_chaos_v1:lifestealer_true_form",
-
-    "born_in_chaos_v1:lord_pumpkinhead",
-    "born_in_chaos_v1:lord_pumpkinhead_withouta_horse",
-    "born_in_chaos_v1:lord_the_headless",
-        
-    "born_in_chaos_v1:pumpkin_bruiser",
-    "born_in_chaos_v1:pumpkinhead",
-        
-    "born_in_chaos_v1:scarlett_persecutor",
-        
-    "born_in_chaos_v1:sir_pumpkinhead",
-    "born_in_chaos_v1:sir_pumpkinhead_withouta_horse",
-    "born_in_chaos_v1:sir_the_headless",
-        
-    "born_in_chaos_v1:spirit_of_the_headless",
-        
-    "born_in_chaos_v1:supreme_bonescaller",
-    "born_in_chaos_v1:supreme_bonescaller_not_despawn",
-    "born_in_chaos_v1:supreme_bonescaller_stage_2" 
+    { "id": "born_in_chaos_v1:nightmare_stalker",               "required": false },
+    { "id": "born_in_chaos_v1:krampus",                         "required": false },
+    { "id": "born_in_chaos_v1:krampus_henchman",                "required": false },
+    { "id": "born_in_chaos_v1:lifestealer",                     "required": false },
+    { "id": "born_in_chaos_v1:lifestealer_true_form",           "required": false },
+    { "id": "born_in_chaos_v1:lord_pumpkinhead",                "required": false },
+    { "id": "born_in_chaos_v1:lord_pumpkinhead_withouta_horse", "required": false },
+    { "id": "born_in_chaos_v1:lord_the_headless",               "required": false },
+    { "id": "born_in_chaos_v1:pumpkin_bruiser",                 "required": false },
+    { "id": "born_in_chaos_v1:pumpkinhead",                     "required": false },
+    { "id": "born_in_chaos_v1:scarlett_persecutor",             "required": false },
+    { "id": "born_in_chaos_v1:sir_pumpkinhead",                 "required": false },
+    { "id": "born_in_chaos_v1:sir_pumpkinhead_withouta_horse",  "required": false },
+    { "id": "born_in_chaos_v1:sir_the_headless",                "required": false },
+    { "id": "born_in_chaos_v1:spirit_of_the_headless",          "required": false },
+    { "id": "born_in_chaos_v1:supreme_bonescaller",             "required": false },
+    { "id": "born_in_chaos_v1:supreme_bonescaller_not_despawn", "required": false },
+    { "id": "born_in_chaos_v1:supreme_bonescaller_stage_2",     "required": false }
   ]
 }

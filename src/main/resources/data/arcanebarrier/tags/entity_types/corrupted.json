@@ -4,46 +4,34 @@
     "minecraft:creeper",
     "minecraft:witch",
 
-    "born_in_chaos_v1:barrel_zombie",
-    "born_in_chaos_v1:zombie_bruiser",
-    "born_in_chaos_v1:zombie_clown",
-    "born_in_chaos_v1:zombie_clown_not_despawn",
-    "born_in_chaos_v1:zombie_fisherman",
-    "born_in_chaos_v1:zombie_lumberjack",
-    "born_in_chaos_v1:swarmer",
-
-    "born_in_chaos_v1:mother_spider",
-    "born_in_chaos_v1:baby_spider_controlled",
-
-    "born_in_chaos_v1:skeleton_demoman",
-    "born_in_chaos_v1:skelton_thrasher",
-    "born_in_chaos_v1:skelton_thrasher_not_despawn",
-
-    "born_in_chaos_v1:bone_imp",
-    "born_in_chaos_v1:bone_imp_minion",
-    "born_in_chaos_v1:bonescaller",
-    "born_in_chaos_v1:bonescaller_not_despawn",
-    "born_in_chaos_v1:controlled_baby_skeleton",
-    "born_in_chaos_v1:baby_skeleton_minion",
-
-    "born_in_chaos_v1:infernal_spirit",
-
-    "born_in_chaos_v1:missioner",
-    "born_in_chaos_v1:missionary_charge",
-    "born_in_chaos_v1:missionary_raider",
-
-    "born_in_chaos_v1:fallen_chaos_knight",
-
-    "born_in_chaos_v1:seared_spirit",
-    "born_in_chaos_v1:seared_spirit_not_despawn",
-
-    "born_in_chaos_v1:spiritof_chaos",
-
-    "born_in_chaos_v1:spirit_guide",
-    "born_in_chaos_v1:spirit_guide_assistant",
-    "born_in_chaos_v1:controlled_spiritual_assistant",
-
-    "born_in_chaos_v1:skeleton_thrasher",
-    "born_in_chaos_v1:skeleton_thrasher_not_despawn"
+    { "id": "born_in_chaos_v1:barrel_zombie",                     "required": false },
+    { "id": "born_in_chaos_v1:zombie_bruiser",                    "required": false },
+    { "id": "born_in_chaos_v1:zombie_clown",                      "required": false },
+    { "id": "born_in_chaos_v1:zombie_clown_not_despawn",          "required": false },
+    { "id": "born_in_chaos_v1:zombie_fisherman",                  "required": false },
+    { "id": "born_in_chaos_v1:zombie_lumberjack",                 "required": false },
+    { "id": "born_in_chaos_v1:swarmer",                           "required": false },
+    { "id": "born_in_chaos_v1:mother_spider",                     "required": false },
+    { "id": "born_in_chaos_v1:baby_spider_controlled",            "required": false },
+    { "id": "born_in_chaos_v1:skeleton_demoman",                  "required": false },
+    { "id": "born_in_chaos_v1:bone_imp",                          "required": false },
+    { "id": "born_in_chaos_v1:bone_imp_minion",                   "required": false },
+    { "id": "born_in_chaos_v1:bonescaller",                       "required": false },
+    { "id": "born_in_chaos_v1:bonescaller_not_despawn",           "required": false },
+    { "id": "born_in_chaos_v1:controlled_baby_skeleton",          "required": false },
+    { "id": "born_in_chaos_v1:baby_skeleton_minion",              "required": false },
+    { "id": "born_in_chaos_v1:infernal_spirit",                   "required": false },
+    { "id": "born_in_chaos_v1:missioner",                         "required": false },
+    { "id": "born_in_chaos_v1:missionary_charge",                 "required": false },
+    { "id": "born_in_chaos_v1:missionary_raider",                 "required": false },
+    { "id": "born_in_chaos_v1:fallen_chaos_knight",               "required": false },
+    { "id": "born_in_chaos_v1:seared_spirit",                     "required": false },
+    { "id": "born_in_chaos_v1:seared_spirit_not_despawn",         "required": false },
+    { "id": "born_in_chaos_v1:spiritof_chaos",                    "required": false },
+    { "id": "born_in_chaos_v1:spirit_guide",                      "required": false },
+    { "id": "born_in_chaos_v1:spirit_guide_assistant",            "required": false },
+    { "id": "born_in_chaos_v1:controlled_spiritual_assistant",    "required": false },
+    { "id": "born_in_chaos_v1:skeleton_thrasher",                 "required": false },
+    { "id": "born_in_chaos_v1:skeleton_thrasher_not_despawn",     "required": false }
   ]
 }
