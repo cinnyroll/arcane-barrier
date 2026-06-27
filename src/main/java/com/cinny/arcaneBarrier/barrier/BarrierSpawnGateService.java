@@ -1,15 +1,17 @@
 package com.cinny.arcaneBarrier.barrier;
 
+import java.util.EnumSet;
+import java.util.Objects;
+
 import com.cinny.arcaneBarrier.ArcaneBarrier;
 import com.cinny.arcaneBarrier.Config;
+
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.core.registries.Registries;
-
-import java.util.EnumSet;
 
 /**
  * Enforces stage-based spawn gating using entity type tags.
@@ -41,9 +43,10 @@ public class BarrierSpawnGateService {
 
         boolean intersects = entityStages.stream().anyMatch(allowed::contains);
         if (Config.debugEntitySpawns) {
+            EntityType<?> entityType = Objects.requireNonNull(entity.getType());
             ArcaneBarrier.LOGGER.info(
                     "Spawn check for {} stages={}, allowed={}, result={}",
-                    EntityType.getKey(entity.getType()), entityStages, allowed, intersects ? "allow" : "deny"
+                    EntityType.getKey(entityType), entityStages, allowed, intersects ? "allow" : "deny"
             );
         }
         return !intersects;
@@ -52,23 +55,31 @@ public class BarrierSpawnGateService {
     /**
      * Collects all barrier stage tags attached to an entity type.
      */
+    @SuppressWarnings({"deprecation", "null"})
     private EnumSet<BarrierStage> getEntityStages(Entity entity) {
         EnumSet<BarrierStage> stages = EnumSet.noneOf(BarrierStage.class);
-        if (entity.getType().builtInRegistryHolder().is(PROTECTED)) {
+        EntityType<?> entityType = Objects.requireNonNull(entity.getType());
+        if (entityType.builtInRegistryHolder().is(PROTECTED)) {
             stages.add(BarrierStage.PROTECTED);
         }
-        if (entity.getType().builtInRegistryHolder().is(DISTURBED)) {
+        if (entityType.builtInRegistryHolder().is(DISTURBED)) {
             stages.add(BarrierStage.DISTURBED);
         }
-        if (entity.getType().builtInRegistryHolder().is(BREACHED)) {
+        if (entityType.builtInRegistryHolder().is(BREACHED)) {
             stages.add(BarrierStage.BREACHED);
         }
-        if (entity.getType().builtInRegistryHolder().is(CORRUPTED)) {
+        if (entityType.builtInRegistryHolder().is(CORRUPTED)) {
             stages.add(BarrierStage.CORRUPTED);
         }
-        if (entity.getType().builtInRegistryHolder().is(COLLAPSE)) {
+        if (entityType.builtInRegistryHolder().is(COLLAPSE)) {
             stages.add(BarrierStage.COLLAPSE);
         }
+
+        ResourceLocation entityTypeId = EntityType.getKey(entityType);
+        if (entityTypeId != null) {
+            stages.addAll(Config.configuredStages(entityTypeId));
+        }
+
         return stages;
     }
 
@@ -88,6 +99,7 @@ public class BarrierSpawnGateService {
     /**
      * Builds a tag key under data/arcanebarrier/tags/entity_types.
      */
+    @SuppressWarnings({"removal", "null"})
     private static TagKey<EntityType<?>> createTag(String path) {
         return TagKey.create(Registries.ENTITY_TYPE, new ResourceLocation(ArcaneBarrier.MODID, path));
     }

@@ -12,6 +12,25 @@ Keys:
 - debugStageSync (boolean): logs stage sync command execution.
 - enableTransitions (boolean): toggles transition command execution.
 - defaultBarrier (int, 0..100): default barrier for new worlds.
+- protectedEntityTypes (string list): extra entity type IDs that count as protected-stage spawns.
+- disturbedEntityTypes (string list): extra entity type IDs that count as disturbed-stage spawns.
+- breachedEntityTypes (string list): extra entity type IDs that count as breached-stage spawns.
+- corruptedEntityTypes (string list): extra entity type IDs that count as corrupted-stage spawns.
+- collapseEntityTypes (string list): extra entity type IDs that count as collapse-stage spawns.
+
+Notes:
+- Entity IDs must use `namespace:path` format, for example `minecraft:zombie`.
+- These lists supplement the built-in datapack tags under `data/arcanebarrier/tags/entity_types`; they do not replace them.
+- If the same entity ID appears in multiple stage lists, it is treated as belonging to all of those stages.
+
+Example:
+```toml
+protectedEntityTypes = ["minecraft:cow"]
+disturbedEntityTypes = ["minecraft:spider"]
+breachedEntityTypes = ["minecraft:zombie", "minecraft:skeleton"]
+corruptedEntityTypes = ["minecraft:enderman"]
+collapseEntityTypes = ["minecraft:warden"]
+```
 
 Source:
 - [Config](../src/main/java/com/cinny/arcaneBarrier/Config.java)
@@ -66,3 +85,4 @@ Files:
 - collapse.json
 
 These tags define which entity types are allowed to spawn as the barrier degrades.
+The common config stage lists above are applied on top of these tags when present.

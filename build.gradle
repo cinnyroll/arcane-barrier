@@ -3,7 +3,6 @@ plugins {
     id 'idea'
     id 'maven-publish'
     id 'net.minecraftforge.gradle' version '[6.0,6.2)'
-    id 'org.parchmentmc.librarian.forgegradle' version '1.+'
 }
 
 version = mod_version
@@ -26,8 +25,8 @@ minecraft {
     // You must be aware of the Mojang license when using the 'official' or 'parchment' mappings.
     // See more information here: https://github.com/MinecraftForge/MCPConfig/blob/master/Mojang.md
     //
-    // Parchment is an unofficial project maintained by ParchmentMC, separate from MinecraftForge
-    // Additional setup is needed to use their mappings: https://parchmentmc.org/docs/getting-started
+    // Parchment is an unofficial project maintained by ParchmentMC, separate from MinecraftForge.
+    // Using it requires additional plugin/repository setup beyond ForgeGradle defaults.
     //
     // Use non-default mappings at your own risk. They may not always work.
     // Simply re-run your setup task after changing the mappings to update your workspace.
@@ -123,6 +122,11 @@ repositories {
         name = 'BlameJared'
         url = 'https://maven.blamejared.com/'
     }
+    maven {
+        name = 'cursemaven'
+        url = 'https://cursemaven.com/'
+        content { includeGroup "curse.maven" }
+    }
 }
 
 dependencies {
@@ -146,6 +150,9 @@ dependencies {
 
     // Staged dependency reintroduction: Bookshelf only.
     //runtimeOnly fg.deobf("net.darkhax.bookshelf:Bookshelf-Forge-1.20.1:20.2.15")
+
+    // Staged dependency for NecronomiconAPI
+    //implementation fg.deobf("curse.maven:necronomicon-586157:1.4.2")
 
     // For more info:
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
