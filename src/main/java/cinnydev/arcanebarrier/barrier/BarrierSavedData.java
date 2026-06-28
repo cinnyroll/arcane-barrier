@@ -1,13 +1,5 @@
 package cinnydev.arcanebarrier.barrier;
 
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.ListTag;
-import net.minecraft.nbt.StringTag;
-import net.minecraft.nbt.Tag;
-import net.minecraft.server.MinecraftServer;
-import net.minecraft.world.level.saveddata.SavedData;
-import net.minecraft.world.level.storage.DimensionDataStorage;
-
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -15,6 +7,13 @@ import java.util.Set;
 import java.util.UUID;
 
 import cinnydev.arcanebarrier.Config;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.ListTag;
+import net.minecraft.nbt.StringTag;
+import net.minecraft.nbt.Tag;
+import net.minecraft.server.MinecraftServer;
+import net.minecraft.world.level.saveddata.SavedData;
+import net.minecraft.world.level.storage.DimensionDataStorage;
 
 /**
  * Persistent world data for barrier state, stage baseline, and first-time event tracking.
@@ -24,7 +23,6 @@ public class BarrierSavedData extends SavedData {
 
     private static final String KEY_BARRIER = "barrier";
     private static final String KEY_CURRENT_STAGE = "currentBarrierStage";
-    private static final String KEY_FIRST_SPELLBOOK = "firstSpellbookCrafted";
     private static final String KEY_FIRST_TIME_ONLY = "firstTimeOnly";
 
     private int barrier;
@@ -54,7 +52,6 @@ public class BarrierSavedData extends SavedData {
         BarrierSavedData data = new BarrierSavedData();
         data.barrier = clamp(tag.contains(KEY_BARRIER) ? tag.getInt(KEY_BARRIER) : Config.defaultBarrier);
         data.currentBarrierStage = BarrierStage.fromString(tag.getString(KEY_CURRENT_STAGE));
-        data.firstSpellbookCrafted = tag.getBoolean(KEY_FIRST_SPELLBOOK);
         
         // Load first-time-only player tracking
         if (tag.contains(KEY_FIRST_TIME_ONLY)) {
@@ -83,7 +80,6 @@ public class BarrierSavedData extends SavedData {
     public CompoundTag save(CompoundTag tag) {
         tag.putInt(KEY_BARRIER, this.barrier);
         tag.putString(KEY_CURRENT_STAGE, this.currentBarrierStage.id());
-        tag.putBoolean(KEY_FIRST_SPELLBOOK, this.firstSpellbookCrafted);
         
         // Save first-time-only player tracking
         CompoundTag ftoTag = new CompoundTag();
@@ -134,14 +130,6 @@ public class BarrierSavedData extends SavedData {
      */
     public boolean isFirstSpellbookCrafted() {
         return this.firstSpellbookCrafted;
-    }
-
-    /**
-     * Updates one-time spellbook craft state and marks data dirty.
-     */
-    public void setFirstSpellbookCrafted(boolean firstSpellbookCrafted) {
-        this.firstSpellbookCrafted = firstSpellbookCrafted;
-        this.setDirty();
     }
 
     /**
