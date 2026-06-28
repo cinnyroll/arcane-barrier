@@ -58,27 +58,6 @@ public class BarrierEventHandlers {
     }
 
     /**
-     * Applies one-time barrier reduction when the configured spellbook is first crafted.
-     */
-    @SubscribeEvent
-    public void onItemCrafted(PlayerEvent.ItemCraftedEvent event) {
-        if (!(event.getEntity() instanceof ServerPlayer serverPlayer)) {
-            return;
-        }
-
-        ResourceLocation craftedId = net.minecraftforge.registries.ForgeRegistries.ITEMS.getKey(event.getCrafting().getItem());
-        if (!DIAMOND_SPELL_BOOK.equals(craftedId)) {
-            return;
-        }
-
-        BarrierSavedData data = barrierService.getData(serverPlayer.server);
-        if (!data.isFirstSpellbookCrafted()) {
-            data.setFirstSpellbookCrafted(true);
-            barrierService.changeBarrier(serverPlayer.server, -5);
-        }
-    }
-
-    /**
      * Cancels entity spawn when blocked by stage-based spawn gate rules.
      */
     @SubscribeEvent
